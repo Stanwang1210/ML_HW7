@@ -86,7 +86,7 @@ def loss_fn_kd(outputs, labels, teacher_outputs, T=20, alpha=0.5):
 
 需要注意的是如果要自己寫的話，Augment的方法最好使用我們的方法，避免輸入有差異導致Teacher Net預測不好。
 """
-import np
+import numpy as np
 import re
 import torch
 from glob import glob
