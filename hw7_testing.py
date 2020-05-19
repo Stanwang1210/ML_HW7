@@ -89,7 +89,7 @@ testing_dataloader = get_dataloader('testing', batch_size=32)
 torch.save(testing_dataloader, 'testing_dataloader.pth')
 # workspace_dir = str(sys.argv[1])
 # workspace_dir = './food-11/'
-# MODLE_PATH = '8_bit_model.pkl'
+MODLE_PATH = '8_bit_model.pkl'
 # #test_x = np.load('test_x.npy')
 
 # print("Loading mean")
