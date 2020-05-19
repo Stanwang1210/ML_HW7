@@ -86,8 +86,8 @@ def get_dataloader(mode='training', batch_size=32):
         shuffle=(mode == 'training'))
 
     return dataloader
-#testing_dataloader = get_dataloader('testing', batch_size=32)
-#torch.save(testing_dataloader, 'testing_dataloader.pth')
+testing_dataloader = get_dataloader('testing', batch_size=32)
+torch.save(testing_dataloader, 'testing_dataloader.pth')
 testing_dataloader = torch.load('testing_dataloader.pth')
 # workspace_dir = str(sys.argv[1])
 # workspace_dir = './food-11/'
