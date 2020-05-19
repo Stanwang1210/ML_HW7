@@ -260,9 +260,9 @@ model_best.eval()
 prediction = []
 with torch.no_grad():
     for i, data in enumerate(testing_dataloader):
-        print('i is ', i)
-        print('data is ', data)
-        test_pred = model_best(data)
+        #print('i is ', i)
+        #print('data is ', data)
+        test_pred = model_best(data[0].cuda())
         test_label = np.argmax(test_pred.cpu().data.numpy(), axis=1)
         for y in test_label:
             prediction.append(y)
