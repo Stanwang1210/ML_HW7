@@ -5,8 +5,8 @@ import torch
 from glob import glob
 from PIL import Image
 import torchvision.transforms as transforms
-my_mean = torch.load('mean.npy')
-my_std = torch.load('std.npy')
+my_mean = np.load('mean.npy')
+my_std = np.load('std.npy')
 trainTransform = transforms.Compose([
     transforms.RandomCrop(256, pad_if_needed=True, padding_mode='symmetric'),
     transforms.RandomHorizontalFlip(),
