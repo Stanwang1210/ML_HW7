@@ -16,7 +16,7 @@ Original file is located at
 # !unzip food-11.zip
 
 import pickle
-
+import numpy as np
 import re
 import torch
 from glob import glob
