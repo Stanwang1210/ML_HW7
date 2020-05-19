@@ -15,23 +15,6 @@ Original file is located at
 
 
 
-from google.colab import drive
-
-drive.mount('/content/drive')
-
-ls
-
-cd 'drive'
-
-ls
-
-cd 'My Drive'
-
-ls
-
-cd 'HW7 Data'
-
-ls
 
 """# Readme
 
