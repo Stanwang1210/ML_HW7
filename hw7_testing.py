@@ -23,6 +23,17 @@ from glob import glob
 from PIL import Image
 import torchvision.transforms as transforms
 
+trainTransform = transforms.Compose([
+    transforms.RandomCrop(256, pad_if_needed=True, padding_mode='symmetric'),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(15),
+    transforms.ToTensor(),
+])
+testTransform = transforms.Compose([
+    transforms.CenterCrop(256),
+    transforms.ToTensor(),
+])
+
 class MyDataset(torch.utils.data.Dataset):
 
     def __init__(self, folderName, transform=None):
@@ -60,16 +71,6 @@ class MyDataset(torch.utils.data.Dataset):
         return image, self.label[idx]
 
 
-trainTransform = transforms.Compose([
-    transforms.RandomCrop(256, pad_if_needed=True, padding_mode='symmetric'),
-    transforms.RandomHorizontalFlip(),
-    transforms.RandomRotation(15),
-    transforms.ToTensor(),
-])
-testTransform = transforms.Compose([
-    transforms.CenterCrop(256),
-    transforms.ToTensor(),
-])
 
 def get_dataloader(mode='training', batch_size=32):
 
@@ -85,8 +86,9 @@ def get_dataloader(mode='training', batch_size=32):
         shuffle=(mode == 'training'))
 
     return dataloader
-testing_dataloader = get_dataloader('testing', batch_size=32)
-torch.save(testing_dataloader, 'testing_dataloader.pth')
+#testing_dataloader = get_dataloader('testing', batch_size=32)
+#torch.save(testing_dataloader, 'testing_dataloader.pth')
+testing_dataloader = torch.load('testing_dataloader.pth')
 # workspace_dir = str(sys.argv[1])
 # workspace_dir = './food-11/'
 MODLE_PATH = '8_bit_model.pkl'
@@ -258,6 +260,8 @@ model_best.eval()
 prediction = []
 with torch.no_grad():
     for i, data in enumerate(testing_dataloader):
+        print('i is ', i)
+        print('data is ', data)
         test_pred = model_best(data)
         test_label = np.argmax(test_pred.cpu().data.numpy(), axis=1)
         for y in test_label:
