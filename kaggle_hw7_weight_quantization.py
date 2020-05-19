@@ -160,7 +160,6 @@ def decode8(fname):
     return custom_dict
 
 encode8(params, '8_bit_model.pkl')
-decode8('8_bit_model.pkl')
 print(f"8-bit cost: {os.stat('8_bit_model.pkl').st_size} bytes.")
 
 """# Q&A
