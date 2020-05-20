@@ -98,6 +98,7 @@ class StudentNet(nn.Module):
                 nn.BatchNorm2d(bandwidth[0]),
                 nn.ReLU6(),
                 nn.MaxPool2d(2, 2, 0),
+                nn.Dropout(0.2),
             ),
             # 接下來每一個Sequential Block都一樣，所以我們只講一個Block
             nn.Sequential(
@@ -112,7 +113,7 @@ class StudentNet(nn.Module):
                 nn.Conv2d(bandwidth[0], bandwidth[1], 1),
                 # 過完Pointwise Convolution不需要再做ReLU，經驗上Pointwise + ReLU效果都會變差。
                 nn.MaxPool2d(2, 2, 0),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
                 # 每過完一個Block就Down Sampling
             ),
 
@@ -122,7 +123,7 @@ class StudentNet(nn.Module):
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[1], bandwidth[2], 1),
                 nn.MaxPool2d(2, 2, 0),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             nn.Sequential(
@@ -131,7 +132,7 @@ class StudentNet(nn.Module):
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[2], bandwidth[3], 1),
                 nn.MaxPool2d(2, 2, 0),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             # 到這邊為止因為圖片已經被Down Sample很多次了，所以就不做MaxPool
@@ -140,7 +141,7 @@ class StudentNet(nn.Module):
                 nn.BatchNorm2d(bandwidth[3]),
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[3], bandwidth[4], 1),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             nn.Sequential(
@@ -148,7 +149,7 @@ class StudentNet(nn.Module):
                 nn.BatchNorm2d(bandwidth[4]),
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[4], bandwidth[5], 1),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             nn.Sequential(
@@ -156,7 +157,7 @@ class StudentNet(nn.Module):
                 nn.BatchNorm2d(bandwidth[5]),
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[5], bandwidth[6], 1),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             nn.Sequential(
@@ -164,7 +165,7 @@ class StudentNet(nn.Module):
                 nn.BatchNorm2d(bandwidth[6]),
                 nn.ReLU6(),
                 nn.Conv2d(bandwidth[6], bandwidth[7], 1),
-                nn.dropout(0.2),
+                nn.Dropout(0.2),
             ),
 
             # 這邊我們採用Global Average Pooling。
