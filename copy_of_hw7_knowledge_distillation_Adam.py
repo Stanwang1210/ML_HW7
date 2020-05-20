@@ -191,4 +191,3 @@ for epoch in range(300):
     print('epoch {:>3d}: train loss: {:6.4f}, acc {:6.4f} valid loss: {:6.4f}, acc {:6.4f}'.format(
         epoch, train_loss, train_acc, valid_loss, valid_acc))
 
-"""# Inference
