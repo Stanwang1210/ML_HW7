@@ -195,7 +195,7 @@ from PIL import Image
 from glob import glob
 import torchvision.models as models
 import torchvision.transforms as transforms
-from hw7_architecture_design import StudentNet # model
+
 
 """Path Specification"""
 path_prefix        = './'
