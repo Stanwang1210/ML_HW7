@@ -266,7 +266,7 @@ for epoch in range(300):
     
     if valid_acc > now_best_acc:
         now_best_acc = valid_acc
-        torch.save(student_net.state_dict(), 'student_model_kaggle_SGD_dropout.bin')
+        torch.save(student_net.state_dict(), 'student_model_kaggle_SGD_300.bin')
     print('epoch {:>3d}: train loss: {:6.4f}, acc {:6.4f} valid loss: {:6.4f}, acc {:6.4f}'.format(
         epoch, train_loss, train_acc, valid_loss, valid_acc))
 #summary(model, (3, 128, 128), 'student_model_from_teacher_fine.txt')
@@ -283,8 +283,8 @@ for epoch in range(300):
 import os
 import torch
 
-print(f"\noriginal cost: {os.stat('student_model_kaggle_SGD_dropout.bin').st_size} bytes.")
-params = torch.load('student_model_kaggle_SGD_dropout.bin')
+print(f"\noriginal cost: {os.stat('student_model_kaggle_SGD_300.bin').st_size} bytes.")
+params = torch.load('student_model_kaggle_SGD_300.bin')
 
 """# 32-bit Tensor -> 16-bit"""
 
@@ -325,8 +325,8 @@ def decode16(fname):
     return custom_dict
 
 
-encode16(params, '16_bit_model_SGD_dropout.pkl')
-print(f"16-bit cost: {os.stat('16_bit_model_SGD_dropout.pkl').st_size} bytes.")
+encode16(params, '16_bit_model_SGD_300.pkl')
+print(f"16-bit cost: {os.stat('16_bit_model_SGD_300.pkl').st_size} bytes.")
 
 """# 32-bit Tensor -> 8-bit (OPTIONAL)
 這邊提供轉成8-bit的方法，僅供大家參考。
@@ -367,8 +367,8 @@ def decode8(fname):
 
     return custom_dict
 
-encode8(params, '8_bit_model_SGD_dropout.pkl')
-print(f"8-bit cost: {os.stat('8_bit_model_SGD_dropout.pkl').st_size} bytes.")
+encode8(params, '8_bit_model_SGD_300.pkl')
+print(f"8-bit cost: {os.stat('8_bit_model_SGD_300.pkl').st_size} bytes.")
 
 
 import torch
@@ -397,7 +397,7 @@ testTransform = transforms.Compose([
 testing_dataloader = torch.load('testing_dataloader.pth')
 # workspace_dir = str(sys.argv[1])
 # workspace_dir = './food-11/'
-MODLE_PATH = '8_bit_model_SGD_dropout.pkl'
+MODLE_PATH = '8_bit_model_SGD_300.pkl'
 # #test_x = np.load('test_x.npy')
 
 # print("Loading mean")
@@ -452,7 +452,7 @@ with torch.no_grad():
         test_label = np.argmax(test_pred.cpu().data.numpy(), axis=1)
         for y in test_label:
             prediction.append(y)
-name = 'Hw7_output_SGD_dropout.csv' 
+name = 'Hw7_output_SGD_300.csv' 
 #將結果寫入 csv 檔
 with open(name, 'w') as f:
     f.write('Id,Category\n')
