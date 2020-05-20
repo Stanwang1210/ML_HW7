@@ -137,12 +137,12 @@ trainTransform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(15),
     transforms.ToTensor(),
-    transforms.Normalize(my_mean,my_std),
+    
 ])
 testTransform = transforms.Compose([
     transforms.CenterCrop(256),
     transforms.ToTensor(),
-    transforms.Normalize(my_mean,my_std),
+    
 ])
 
 def get_dataloader(mode='training', batch_size=32):
@@ -243,7 +243,7 @@ for epoch in range(250):
     
     if valid_acc > now_best_acc:
         now_best_acc = valid_acc
-        torch.save(student_net.state_dict(), 'student_model_kaggle.bin')
+        torch.save(student_net.state_dict(), 'student_model_kaggle_SGD.bin')
     print('epoch {:>3d}: train loss: {:6.4f}, acc {:6.4f} valid loss: {:6.4f}, acc {:6.4f}'.format(
         epoch, train_loss, train_acc, valid_loss, valid_acc))
 
