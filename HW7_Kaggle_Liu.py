@@ -159,7 +159,7 @@ trainable = sum(p.numel() for p in student_net.parameters() if p.requires_grad)
 print('\nparameter total:{}, trainable:{}\n'.format(total, trainable))
 
 print("SGD optimizer")
-optimizer = optim.SGD(student_net.parameters(), lr=1e-2, momentum=0.9)
+optimizer = optim.SGD(student_net.parameters(), lr=1e-2, momentum=0.75)
 scheduler = StepLR(optimizer, step_size=50, gamma=0.5)
 # print("Adam optimizer")
 # optimizer = optim.Adam(student_net.parameters(), lr=1e-3)
@@ -167,7 +167,7 @@ scheduler = StepLR(optimizer, step_size=50, gamma=0.5)
 print('Training')
 teacher_net.eval() # TeacherNet is always Eval mode
 now_best_acc = 0
-for epoch in range(275):
+for epoch in range(250):
     student_net.train()
     train_loss, train_acc = run_epoch(train_dataloader, update=True)
     student_net.eval()
@@ -203,7 +203,7 @@ path_prefix        = './'
 # model_16b_filename = os.path.join(path_prefix, 'model/16_bit_model.bin')
 # model_8b_filename  = os.path.join(path_prefix, 'model/model_8_bit.bin')
 in_model_filename  = student_model_filename
-model_8b_filename  = f'{student_model_filename}_8_bit.bin'
+model_8b_filename  = './hw7_kaggle_predict_model_8_bit.bin'
 
 # region: 32-bit Tensor -> 16-bit
 def encode16(params, fname):
