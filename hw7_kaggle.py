@@ -77,7 +77,7 @@ def get_dataloader(mode='training', batch_size=32):
 testing_dataloader = torch.load('testing_dataloader.pth')
 # workspace_dir = str(sys.argv[1])
 # workspace_dir = './food-11/'
-MODLE_PATH = '8_bit_model.pkl'
+MODLE_PATH = '8_bit_model_SGD.pkl'
 # #test_x = np.load('test_x.npy')
 
 # print("Loading mean")
@@ -251,7 +251,7 @@ with torch.no_grad():
         test_label = np.argmax(test_pred.cpu().data.numpy(), axis=1)
         for y in test_label:
             prediction.append(y)
-name = 'Hw7_output_norm.csv' 
+name = 'Hw7_output_SGD.csv' 
 #將結果寫入 csv 檔
 with open(name, 'w') as f:
     f.write('Id,label\n')
