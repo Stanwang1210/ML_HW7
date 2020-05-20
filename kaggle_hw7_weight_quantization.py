@@ -68,8 +68,8 @@ Compression有很多種門派，在這裡我們會介紹上課出現過的其中
 import os
 import torch
 
-print(f"\noriginal cost: {os.stat('student_model_from_teacher_fine.bin').st_size} bytes.")
-params = torch.load('student_model_from_teacher_fine.bin')
+print(f"\noriginal cost: {os.stat('student_model_kaggle_SGD.bin').st_size} bytes.")
+params = torch.load('student_model_kaggle_SGD.bin')
 
 """# 32-bit Tensor -> 16-bit"""
 
@@ -112,8 +112,8 @@ def decode16(fname):
     return custom_dict
 
 
-encode16(params, '16_bit_model.pkl')
-print(f"16-bit cost: {os.stat('16_bit_model.pkl').st_size} bytes.")
+encode16(params, '16_bit_model_SGD.pkl')
+print(f"16-bit cost: {os.stat('16_bit_model_SGD.pkl').st_size} bytes.")
 
 """# 32-bit Tensor -> 8-bit (OPTIONAL)
 
@@ -159,8 +159,8 @@ def decode8(fname):
 
     return custom_dict
 
-encode8(params, '8_bit_model.pkl')
-print(f"8-bit cost: {os.stat('8_bit_model.pkl').st_size} bytes.")
+encode8(params, '8_bit_model_SGD.pkl')
+print(f"8-bit cost: {os.stat('8_bit_model_SGD.pkl').st_size} bytes.")
 
 """# Q&A
 
