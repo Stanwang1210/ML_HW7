@@ -30,7 +30,7 @@ data_dir               = os.path.join(path_prefix, 'food-11')
 # student_model_filename = os.path.join(path_prefix, 'model/student_model.bin')
 #data_dir               = sys.argv[1]
 teacher_model_filename = './teacher_resnet18.bin'
-student_model_filename = './hw7_kaggle_predict_model.bin'
+student_model_filename = './hw7_kaggle_predict_model_momentum_0.75.bin'
 
 # region: Knowledge Distillation Loss
 # Loss = alpha * T^2 * KL(Teacher's Logits / T || Student's Logits / T) + (1-alpha)(original Loss)
@@ -203,7 +203,7 @@ path_prefix        = './'
 # model_16b_filename = os.path.join(path_prefix, 'model/16_bit_model.bin')
 # model_8b_filename  = os.path.join(path_prefix, 'model/model_8_bit.bin')
 in_model_filename  = student_model_filename
-model_8b_filename  = './hw7_kaggle_predict_model_8_bit.bin'
+model_8b_filename  = './hw7_kaggle_predict_model_momentum_0.75_8_bit.bin'
 
 # region: 32-bit Tensor -> 16-bit
 def encode16(params, fname):
@@ -297,7 +297,7 @@ student_net.load_state_dict(decode8(model_8b_filename))
 print('Predicting')
 student_net.eval()
 prediction = []
-predict_filename = 'hw7_kaggle_predict_liu.csv'
+predict_filename = 'hw7_kaggle_predict_SGD_momentum_0.75_liu.csv'
 with torch.no_grad():
     for i, data in enumerate(test_dataloader):
         test_pred = student_net(data[0].cuda())
