@@ -71,7 +71,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.models as models
-from copy_of_hw7_architecture_design import *
+from hw7_Architecture_Design import *
 # Load進我們的Model架構(在hw7_Architecture_Design.ipynb內)
 #gdown --id '1lJS0ApIyi7eZ2b3GMyGxjPShI8jXM2UC' --output "hw7_Architecture_Design.ipynb"
 # %run "hw7_Architecture_Design.ipynb"
