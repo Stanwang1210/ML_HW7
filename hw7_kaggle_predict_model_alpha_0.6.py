@@ -115,7 +115,7 @@ def get_dataloader(mode='training', batch_size=32):
 #endregion
 
 # region: Training
-def run_epoch(dataloader, update=True, alpha=0.5):
+def run_epoch(dataloader, update=True, alpha=0.6):
     total_num, total_hit, total_loss = 0, 0, 0
     for now_step, batch_data in enumerate(dataloader):
         # initialize optimizer
