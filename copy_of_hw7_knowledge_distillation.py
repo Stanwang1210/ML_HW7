@@ -170,14 +170,17 @@ def get_dataloader(mode='training', batch_size=32):
 """
 
 # get dataloader
-train_dataloader = get_dataloader('training', batch_size=32)
-valid_dataloader = get_dataloader('validation', batch_size=32)
-torch.save(train_dataloader, 'train_dataloader')
-torch.save(valid_dataloader, 'valid_dataloader')
+
+#train_dataloader = get_dataloader('training', batch_size=32)
+#valid_dataloader= get_dataloader('validation', batch_size=32)
+#torch.save(train_dataloader, 'train_dataloader')
+#torch.save(valid_dataloader, 'valid_dataloader')
+train_dataloader = torch.load('train_dataloader')
+valid_dataloader = torch.load('valid_dataloader')
 #!gdown --id '1B8ljdrxYXJsZv2vmTequdPOofp3VF3NN' --output teacher_resnet18.bin
 
-teacher_net = models.resnet18(pretrained=False, num_classes=11).cuda()
-student_net = StudentNet(base=16).cuda()
+teacher_net = modeltorch.loadtvmTequdPOofp3VF3NN=11).cuda()
+student_net = StudentNet(base=16).cuda() eltorch.loadtvvaliddPOofp3VF3NN=
 
 teacher_net.load_state_dict(torch.load(f'./teacher_resnet18.bin'))
 optimizer = optim.SGD(student_net.parameters(), lr=0.02, momentum=0.01)
