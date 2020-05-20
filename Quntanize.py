@@ -19,7 +19,7 @@ from PIL import Image
 from glob import glob
 import torchvision.models as models
 import torchvision.transforms as transforms
-from  import StudentNet # model
+#from  import StudentNet # model
 """hw7_Network_Compression (Architecuture Design)"""
 # Depthwise & Pointwise Convolution
 
@@ -234,7 +234,7 @@ import pickle
 from glob import glob
 from PIL import Image
 import torchvision.transforms as transforms
-from hw7_architecture_design import StudentNet 
+#from hw7_architecture_design import StudentNet 
 
 
 dir_name = './food-11'
