@@ -12,12 +12,12 @@ trainTransform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.RandomRotation(15),
     transforms.ToTensor(),
-    transforms.Normalize(my_mean,my_std),
+    
 ])
 testTransform = transforms.Compose([
     transforms.CenterCrop(256),
     transforms.ToTensor(),
-    transforms.Normalize(my_mean,my_std),
+   
 ])
 
 class MyDataset(torch.utils.data.Dataset):
