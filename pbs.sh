@@ -17,7 +17,7 @@ cd ./HW7
 # python3 src/hw7_from_scratch.py
 # python3 src/hw7_test.py ./food-11 ./predict.csv
 # bash hw7_test.sh ./food-11 ./predict_2.csv
-bash python3 HW7_Kaggle_Liu.py 
+bash python3 HW7_github.py 
 
 # cd ./hw9
 # python3 src/hw9_unsupervised.py
