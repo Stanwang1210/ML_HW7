@@ -2,8 +2,8 @@
 
 #PBS -l select=1:ncpus=8:ngpus=1
 #PBS -q v100
-#PBS -o ./b07701209/HW7/log/log.o
-#PBS -e ./b07701209/HW7/log/log.e
+#PBS -o ./b07701209/HW7/pbs_output
+#PBS -e ./b07701209/HW7/pbs_error
 #PBS -m ea
 #PBS -M b07701209@ntu.edu.tw
 
