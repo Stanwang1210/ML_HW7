@@ -159,7 +159,7 @@ trainable = sum(p.numel() for p in student_net.parameters() if p.requires_grad)
 print('\nparameter total:{}, trainable:{}\n'.format(total, trainable))
 
 print("SGD optimizer")
-optimizer = optim.SGD(student_net.parameters(), lr=1e-2, momentum=0.75)
+optimizer = optim.SGD(student_net.parameters(), lr=1e-2, momentum=0.85)
 scheduler = StepLR(optimizer, step_size=50, gamma=0.5)
 # print("Adam optimizer")
 # optimizer = optim.Adam(student_net.parameters(), lr=1e-3)
